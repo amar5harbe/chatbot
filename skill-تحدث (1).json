@@ -1,0 +1,418 @@
+{
+  "intents": [
+    {
+      "intent": "ترحيب",
+      "examples": [
+        {
+          "text": "السلام عليكم"
+        },
+        {
+          "text": "اهلا"
+        },
+        {
+          "text": "اهلاا"
+        },
+        {
+          "text": "اهلين"
+        },
+        {
+          "text": "مراحب"
+        },
+        {
+          "text": "مرحبا"
+        },
+        {
+          "text": "هاي"
+        },
+        {
+          "text": "هايي"
+        },
+        {
+          "text": "هلا"
+        },
+        {
+          "text": "هلو"
+        },
+        {
+          "text": "هلوو"
+        },
+        {
+          "text": "هيلو"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "حجوزات",
+      "examples": [
+        {
+          "text": "3"
+        },
+        {
+          "text": "الساعة 10"
+        },
+        {
+          "text": "عندكم حجز"
+        },
+        {
+          "text": "في حجز؟"
+        },
+        {
+          "text": "فيه طاولة فاضية"
+        },
+        {
+          "text": "هل عندكم حجوزات"
+        },
+        {
+          "text": "يوم الاحد"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "معلوماتي",
+      "examples": [
+        {
+          "text": "من أنت"
+        },
+        {
+          "text": "مين أنت"
+        },
+        {
+          "text": "مين معي"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-date",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-time",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "امراض",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "سرطان",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "كورونا",
+          "synonyms": [
+            "كرونا",
+            "كوفيد"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "الوقت؟"
+              },
+              {
+                "text": "الساعة كم بتشرف حضرتك"
+              },
+              {
+                "text": "!حدد الوقت طيب"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_5_1629157102414",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1629157102415",
+      "previous_sibling": "handler_7_1629157102415"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1629157043046",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_4_1629157043052"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "كم عددكم؟"
+              },
+              {
+                "text": "العدد؟"
+              },
+              {
+                "text": "كم شخص؟"
+              },
+              {
+                "text": "كم عددكم مع بزرانكم؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_6_1629157222860",
+      "event_name": "focus",
+      "dialog_node": "handler_4_1629157222860",
+      "previous_sibling": "handler_9_1629157222860"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "اي يوم؟"
+              },
+              {
+                "text": "يوم ايش؟"
+              },
+              {
+                "text": "اي يوم  ودك تزورنا..مع اني ادري انك تبينا كل يوم بس يالله؟"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "slot_1_1629157043046",
+      "event_name": "focus",
+      "dialog_node": "handler_5_1629157043052",
+      "previous_sibling": "handler_4_1629157043052"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1629157102414",
+      "context": {
+        "time": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_7_1629157102415"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_6_1629157222860",
+      "context": {
+        "number": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_9_1629157222860"
+    },
+    {
+      "type": "standard",
+      "title": "ترحيب",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ياهلا اسألني ..تراي بس للحجز"
+              },
+              {
+                "text": "مرحبا"
+              },
+              {
+                "text": "يالله تحييه"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#ترحيب",
+      "dialog_node": "node_10_1629156358028",
+      "previous_sibling": "node_6_1629156951390"
+    },
+    {
+      "type": "standard",
+      "title": "معلوماتي",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "أنا روبوت طال عمرك "
+              },
+              {
+                "text": "مو شغلك "
+              },
+              {
+                "text": "مايخصك"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#معلوماتي",
+      "dialog_node": "node_5_1629177903841",
+      "previous_sibling": "مرحبا"
+    },
+    {
+      "type": "frame",
+      "title": "حجوزاتي",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "حياكم الله,تم تأكيد الحجز"
+              },
+              {
+                "text": "تم تأكيد الحجز ..ننتظرك"
+              },
+              {
+                "text": "تممم,لاتتأخر"
+              },
+              {
+                "text": "تم ياعسل, تنورنا"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#حجوزات",
+      "dialog_node": "node_6_1629156951390",
+      "previous_sibling": "node_5_1629177903841"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_6_1629156951390",
+      "variable": "$date",
+      "dialog_node": "slot_1_1629157043046"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_6_1629156951390",
+      "variable": "$time",
+      "dialog_node": "slot_5_1629157102414",
+      "previous_sibling": "slot_1_1629157043046"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_6_1629156951390",
+      "variable": "$number",
+      "dialog_node": "slot_6_1629157222860",
+      "previous_sibling": "slot_5_1629157102414"
+    },
+    {
+      "type": "standard",
+      "title": "أي شيء آخر",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "مافهمت عليك ياقلبي"
+              },
+              {
+                "text": "تراي محدود القدرات وبس احجز لك"
+              },
+              {
+                "text": "وش تقصد"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "أي شيء آخر",
+      "previous_sibling": "node_10_1629156358028",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "مرحبا",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "آمرني"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "مرحبا"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "اليوم"
+    }
+  ],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": ":هل قصدت",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "كل ما سبق خطأ"
+    },
+    "human_agent_assist": {
+      "prompt": ":هل قصدت"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "تحدث",
+  "language": "ar",
+  "description": ""
+}
